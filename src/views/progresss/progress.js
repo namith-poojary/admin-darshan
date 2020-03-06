@@ -226,8 +226,9 @@ class progress extends Component {
 <Card className="ram" style={{ width:'100%'}}>
      <Card.Body>
        <div className="sam">
+       <h1>{(post.name).slice(0,10)}</h1>
    <h2>{post.qualification}</h2>
-   <h1>{(post.name).slice(0,10)}</h1> 
+    
    
    </div>
 

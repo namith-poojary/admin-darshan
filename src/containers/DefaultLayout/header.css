@@ -64,6 +64,9 @@ margin-bottom: 27px;
     .d-md-down-none{
     margin-top: 1rem;
   }
+  .d-md-down-none1{
+    padding:20px;
+  }
 /*   
     .form-group {
       display: flex;

@@ -25,10 +25,12 @@ class Add extends Component {
       phone: { value: 0 },
       department: ' ',
       role: ' ',
+      selectValue: ""
 
     }
 
     this.toggle = this.toggle.bind(this);
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
 
   toggle() {
@@ -41,6 +43,9 @@ class Add extends Component {
       [e.target.id]: e.target.value
     });
   }
+  handleDropdownChange(e) {
+    this.setState({ selectValue: e.target.value });
+  }
   /**
    * @property {Function} handleSubmit runs on submit
    */
@@ -50,7 +55,7 @@ class Add extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      usertype: this.state.usertype,
+      usertype: this.state.selectValue,
       phone: this.state.phone,
       department: this.state.department,
       role: this.state.role,
@@ -73,9 +78,10 @@ class Add extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      usertype: this.state.usertype,
+      // usertype: this.state.usertype,
+      usertype: this.state.selectValue,
       phone: parseInt(this.state.phone),
-      department: this.state.department,
+      // department: this.state.department,
       role: this.state.role,
       salary: parseInt(this.state.salary)
 
@@ -90,6 +96,7 @@ class Add extends Component {
           console.log(response)
           alert("added")
         }
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -109,36 +116,44 @@ class Add extends Component {
           <div className="content" >
             <div className="form">
               <div className="form-group">
-                <label>Name       .</label>
+                <label>Name       </label>
                 <p><input type="text" id="name" name="name" placeholder="name" onChange={this.handleChange} /></p>
               </div>
               <div className="form-group">
-                <label>Email-Id         .</label>
+                <label>Email-Id         </label>
                 <p><input type="text" id="email" name="email" placeholder="email" onChange={this.handleChange} /></p>
               </div>
               <div className="form-group">
-                <label>Password        .</label>
+                <label>Password        </label>
                 <p> <input type="Password" id="password" name="password" placeholder="password" onChange={this.handleChange} /></p>
               </div>
 
               <div className="form-group">
-                <label >Phone      .</label>
+                <label >Phone      </label>
                 <p> <input type="number" id="phone" name="phone" placeholder="phone" onChange={this.handleChange} /></p>
               </div>
-              <div className="form-group">
-                <label>Department       .</label>
+              {/* <div className="form-group">
+                <label>Department       </label>
                 <p>  <input type="text" id="department" name="department" placeholder="department" onChange={this.handleChange} /></p>
-              </div>
+              </div> */}
               <div className="form-group">
-                <label>Role           .</label>
+                <label>Role           </label>
                 <p>  <input type="text" id="role" name="role" placeholder="role" onChange={this.handleChange} /></p>
               </div>
               <div className="form-group">
-                <label>Usertype.</label>
-                <p>  <input type="text" id="usertype" name="usertype" placeholder="usertype" onChange={this.handleChange} /></p>
+                <label>Usertype</label>
+                <p>  
+                <select id = "dropdown" onChange={this.handleDropdownChange}>
+    <option value="admin">Admin</option>
+    <option value="employee">Employee</option>
+    
+ </select> 
+                  {/* <input type="text" id="usertype" name="usertype" placeholder="usertype" onChange={this.handleChange} /> */}
+                  </p>
+                  <br></br>
               </div>
               <div className="form-group">
-                <label >Salary        .</label>
+                <label >Salary        </label>
                 <p> <input type="number" id="salary" name="salary" placeholder="salary" onChange={this.handleChange} /></p>
               </div>
             </div>
